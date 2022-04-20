@@ -26,11 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-index">
 
-    <h1><?= "<?= " ?>Html::encode($this->title) ?></h1>
+    <div class="page-header d-print-none">
+        <div class="row g-2 align-items-center">
+            <div class="col">
+                <h2 class="page-title">
+                    <?= "<?= " ?>Html::encode($this->title) ?>
+                </h2>
+                <div class="text-muted mt-1">1-12 of 241 photos</div>
+            </div>
+            <!-- Page title actions -->
+            <div class="col-12 col-md-auto ms-auto d-print-none">
+                <div class="d-flex">
+                    <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-primary']) ?>
 
-    <p>
-        <?= "<?= " ?>Html::a(<?= $generator->generateString('Create ' . Inflector::camel2words(StringHelper::basename($generator->modelClass))) ?>, ['create'], ['class' => 'btn btn-primary']) ?>
-    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?= $generator->enablePjax ? "    <?php Pjax::begin(); ?>\n" : '' ?>
     <?php if (!empty($generator->searchModelClass)) : ?>
@@ -73,7 +85,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ?>
             [
             'class' => ActionColumn::className(),
-            'urlCreator' => function ($action, <?= $modelClass ?> $model, $key, $index, $column) {
+            'urlCreator' => function ($action, $model, $key, $index, $column) {
             return Url::toRoute([$action, <?= $generator->generateUrlParams() ?>]);
             }
             ],

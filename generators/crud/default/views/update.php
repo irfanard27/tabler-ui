@@ -31,10 +31,17 @@ $this->params['breadcrumbs'][] = <?= $generator->generateString('Update') ?>;
 ?>
 <div class="<?= Inflector::camel2id(StringHelper::basename($generator->modelClass)) ?>-update">
 
-    <h1><?= '<?= ' ?>Html::encode($this->title) ?></h1>
+    <h2><?= "<?= " ?>Html::encode($this->title) ?></h2>
+    <div class="card">
+        <div class="card-header">
+            Update <?= "<?= " ?>Html::encode($this->title) ?>
+        </div>
 
-    <?= '<?= ' ?>$this->render('_form', [
-        'model' => $model,
-    ]) ?>
+        <div class="card-body">
+            <?= "<?= " ?>$this->render('_form', [
+            'model' => $model,
+            ]) ?>
+        </div>
+    </div>
 
 </div>

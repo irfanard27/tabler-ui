@@ -32,7 +32,7 @@ use yii\helpers\Url;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class ActionColumn extends yii\grid\Column
+class ActionColumn extends \yii\grid\Column
 {
   /**
    * {@inheritdoc}
@@ -160,11 +160,12 @@ class ActionColumn extends yii\grid\Column
    */
   protected function initDefaultButtons()
   {
-    $this->initDefaultButton('view', 'eye-open');
-    $this->initDefaultButton('update', 'pencil');
+    $this->initDefaultButton('view', 'eye', ["class" => "btn btn-sm btn-icon"]);
+    $this->initDefaultButton('update', 'pencil', ["class" => "btn btn-sm btn-icon"]);
     $this->initDefaultButton('delete', 'trash', [
       'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
       'data-method' => 'post',
+      "class" => "btn btn-sm btn-icon"
     ]);
   }
 
@@ -197,9 +198,9 @@ class ActionColumn extends yii\grid\Column
           'aria-label' => $title,
           'data-pjax' => '0',
         ], $additionalOptions, $this->buttonOptions);
-        $icon = isset($this->icons[$iconName])
-          ? $this->icons[$iconName]
-          : Html::tag('span', '', ['class' => "glyphicon glyphicon-$iconName"]);
+        $icon = !isset($iconName)
+          ? $iconName
+          : Html::tag('i', '', ['class' => "ti ti-$iconName"]);
         return Html::a($icon, $url, $options);
       };
     }

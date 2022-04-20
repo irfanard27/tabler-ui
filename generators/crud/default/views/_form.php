@@ -7,6 +7,7 @@ use yii\helpers\StringHelper;
 /* @var $generator yii\gii\generators\crud\Generator */
 
 /* @var $model \yii\db\ActiveRecord */
+
 $model = new $generator->modelClass();
 $safeAttributes = $model->safeAttributes();
 if (empty($safeAttributes)) {
@@ -28,13 +29,13 @@ use yii\widgets\ActiveForm;
 
     <?= "<?php " ?>$form = ActiveForm::begin(); ?>
 
-<?php foreach ($generator->getColumnNames() as $attribute) {
-    if (in_array($attribute, $safeAttributes)) {
-        echo "    <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
-    }
-} ?>
+    <?php foreach ($generator->getColumnNames() as $attribute) {
+        if (in_array($attribute, $safeAttributes)) {
+            echo "    <?= " . $generator->generateActiveField($attribute) . " ?>\n\n";
+        }
+    } ?>
     <div class="form-group">
-        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Save') ?>, ['class' => 'btn btn-success']) ?>
+        <?= "<?= " ?>Html::submitButton(<?= $generator->generateString('Save') ?>, ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?= "<?php " ?>ActiveForm::end(); ?>
