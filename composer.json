@@ -1,0 +1,21 @@
+{
+    "name": "irfanard27/tabler-ui",
+    "description": "yii2 tabler UI",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "irfan ardiansyah",
+            "email": "ardiafire27@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "irfanard27\\TablerUi\\": ""
+        }
+    }
+}
